@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping cart</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+
+</head>
+
+<body>
+
+    <main class="pt-5">
+        <div class="container" style="max-width: 1000px">
+
+            <div class="col-12">
+                <h1 class="h2">Your Cart</h1>
+            </div>
+            <div class="col-12">
+                <p>Manage <b>items</b> in your cart</p>
+            </div>
+            <hr />
+        </div>
+
+        <div class="container" style="max-width: 1000px">
+            {% if messages %}
+            {% for message in messages %}
+            <div class="alert {{message.tags}} text-center">
+                {{ message }}
+            </div>
+            {% endfor %}
+            {% endif %}
+
+            <div class="col-12 bg-light p-3 ">
+                <div class="row text-center mb-4">
+                    <div class="col-4">
+                        <h5>Product Name</h5>
+                    </div>
+                    <div class="col-4">
+                        <h5>Quantity(Kg)</h5>
+                    </div>
+                    <div class="col-4">
+                        <h5>Price(per Kg in AED)</h5>
+                    </div>
+                </div>
+                <form method="post">
+                    {% csrf_token %}
+                    <div class="row text-center">
+                        {% for product in products %}
+                        <div class="col-4 mb-1">
+                            <input class="text-center" name='name' type="text" value="{{product.name}}" readonly>
+                        </div>
+                        <div class="col-4 mb-1">
+                            <input class="text-center" name='quantity' type="number" value="1" min="0">
+                        </div>
+                        <div class="col-4 mb-1">
+                            <input class="text-center" name='price' type="number"
+                                value="{{product.price}}" min="0" readonly>
+                        </div>
+                        {% endfor %}
+                    </div>
+
+                    <div class="col-4 float-end text-center">
+                        <p><strong>Total Price:</strong> ${{total_price}} </p>
+                    </div>
+                    <button type="submit" class="btn btn-success fw-bold col-12 mt-3" type="button">Buy</button>
+                </form>
+
+            </div>
+        </div>
+    </main>
+</body>
+
+</html>
