@@ -1,3 +1,3 @@
 # shopping-cart
 
-***Installation
+***Installation***
