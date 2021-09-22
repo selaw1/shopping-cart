@@ -1,0 +1,14 @@
+ul{
+  list-style-type: none;
+  color: red;
+  font-weight: 700;
+  padding: 0;
+}
+
+.container {
+  max-width: 960px;
+}
+
+.errors{
+  text-align:start;
+}
