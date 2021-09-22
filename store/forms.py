@@ -41,8 +41,6 @@ class ProductFormSet(OrderProductFormSet):
                 product = Product.objects.get(name=data["name"])
 
                 if product.quantity_in_stock == 0:
-                    product.in_stock = False
-                    product.save()
                     raise forms.ValidationError(
                         f'I\'m sorry but we are out of stock for {data["name"]}'
                     )

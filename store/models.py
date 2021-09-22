@@ -19,7 +19,6 @@ class Product(models.Model):
     price = models.PositiveIntegerField()
     quantity = models.PositiveIntegerField(default=1)
     quantity_in_stock = models.PositiveIntegerField()
-    in_stock = models.BooleanField(default=True)
     order = models.ForeignKey(
         Order,
         on_delete=models.CASCADE,

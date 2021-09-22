@@ -3,7 +3,7 @@
 
 {% block content %}
 
-<div class="container mt-4 text-center" >
+<div class="container mt-4 text-center">
     <h2>{{object.name|title}}</h2>
     <p>Edit Items and checkout</p>
     {% if messages %}
@@ -35,37 +35,36 @@
 
             <div class="row text-center">
                 {% for product_form in form %}
-                    {% if product_form.instance.in_stock %}
 
-                        <!-- ID Feild -->
-                        {% for hidden_field in product_form.hidden_fields %}
-                            {{hidden_field.errors}}
-                            {{hidden_field}}
-                        {% endfor %}
-                        <div class="col-4 mb-1">
-                            <h6> {{product_form.name|as_crispy_field }} </h6>
-                        </div>
-                        <div class="col-4 mb-1">
-                            {{product_form.quantity|as_crispy_field }}
-                        </div>
-                        <div class="col-4 mb-1">
-                            <h6> {{product_form.price|as_crispy_field }} </h6>
-                        </div>
-                        <!-- {{product_form.DELETE}} -->
+                <!-- ID Feild -->
+                {% for hidden_field in product_form.hidden_fields %}
+                {{hidden_field.errors}}
+                {{hidden_field}}
+                {% endfor %}
+                <div class="col-4 mb-1">
+                    <h6> {{product_form.name|as_crispy_field }} </h6>
+                </div>
+                <div class="col-4 mb-1">
+                    {{product_form.quantity|as_crispy_field }}
+                </div>
+                <div class="col-4 mb-1">
+                    <h6> {{product_form.price|as_crispy_field }} </h6>
+                </div>
+                <!-- {{product_form.DELETE}} -->
 
-                    {% endif %}
                 {% endfor %}
 
             </div>
             <div class="row ">
                 <div class="col-8 border-top errors">
                     {{form.non_form_errors}}
-                </div>    
+                </div>
                 <div class="col-4 border-top">
                     <p><strong>Total Price = </strong> ${{total_price}} </p>
                 </div>
             </div>
-            <button type="submit" class="btn btn-dark fw-bold col-12 mt-3" name='validate' type="button">Check Products</button>
+            <button type="submit" class="btn btn-dark fw-bold col-12 mt-3" name='validate' type="button">Check
+                Products</button>
             <button type="submit" class="btn btn-success fw-bold col-12 mt-1" name='buy' type="button">Buy</button>
         </form>
     </div>

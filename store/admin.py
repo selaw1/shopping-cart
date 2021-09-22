@@ -16,10 +16,13 @@ class ProductAdmin(admin.ModelAdmin):
         "price",
         "quantity",
         "quantity_in_stock",
-        "in_stock",
     ]
-    list_filter = ["in_stock", "name", "order"]
-    list_editable = ["price", "quantity", "quantity_in_stock", "in_stock"]
+    list_filter = ["name", "order"]
+    list_editable = [
+        "price",
+        "quantity",
+        "quantity_in_stock",
+    ]
 
     fieldsets = (
         (
@@ -31,7 +34,6 @@ class ProductAdmin(admin.ModelAdmin):
                     "quantity",
                     "price",
                     "quantity_in_stock",
-                    "in_stock",
                 )
             },
         ),
