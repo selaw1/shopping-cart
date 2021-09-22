@@ -36,7 +36,7 @@ class ProductFormSet(OrderProductFormSet):
     def clean(self, *args, **kwargs):
         cleaned_data = self.cleaned_data
 
-        if "validate" in self.data:
+        if "validate" in self.data or "buy" in self.data:
             for data in cleaned_data:
                 product = Product.objects.get(name=data["name"])
 
